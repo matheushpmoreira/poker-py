@@ -1,9 +1,8 @@
-import game
+from game import *
 
 def main():
-    # game = game.Game()
-    pass
+    player = HumanPlayer("Teste", 100)
+    game = Game(player)
+    game.start()
 
-
-if __name__ == '__main__':
-    main()
+main()
