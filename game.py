@@ -231,11 +231,21 @@ class Round:
             self.bet = value
             self.player.discount_chips(value)
             self.pot = 2 * value
-        
-    def betting(self, opcao: str, bet: int):
+
+    def betting(self, option: str, val: int):
         ''' Tem que ver como vai ser implementado a interface para fazer isso aqui, mas a princípio
         são 3 opções, continuar, aumentar ou correr, e aí dá pra ver de implementar a lógica de escolha da CPU'''
-        pass
+        if option == "continuar":
+            pass
+        elif option == "correr":
+            pass
+        elif option == "aumentar":
+            while (bet := int(input("Valor a aumentar:"))) > self.player.get_chips():
+                print(f"Valor de chips ultrapassado. Máximo permitido: {self.player.get_chips()}")
+            self.player.discount_chips(bet)
+            self.pot += bet
+        else:
+            raise ValueError(f"Unexpected betting option: {option}")
 
 class Game:
     round: Round
