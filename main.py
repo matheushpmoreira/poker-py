@@ -1,8 +1,9 @@
 from game import *
+from app import App
 
 def main():
-    player = HumanPlayer("Teste", 100)
-    game = Game(player)
-    game.start()
+    app = App()
+    app.mainloop()
 
-main()
+if __name__ == "__main__":
+    main()

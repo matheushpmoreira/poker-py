@@ -226,14 +226,13 @@ class Round:
     def turn(self):
         self.table.new_card(self.deck.pick(1)[0])
 
-    def simple_bet(self):
-        bet = int(input("Aposta inicial?\n"))
-        if self.player.check_limit(bet):
-            self.bet = bet
-            self.player.discount_chips(bet)
-            self.pot = 2 * bet
+    def simple_bet(self, value: int):
+        if self.player.check_limit(value):
+            self.bet = value
+            self.player.discount_chips(value)
+            self.pot = 2 * value
         
-    def betting(self):
+    def betting(self, opcao: str, bet: int):
         ''' Tem que ver como vai ser implementado a interface para fazer isso aqui, mas a princípio
         são 3 opções, continuar, aumentar ou correr, e aí dá pra ver de implementar a lógica de escolha da CPU'''
         pass
@@ -270,10 +269,9 @@ class Game:
 
     def start(self):
         self.round = Round(self.deck, self.player, self.cpu, self.table)
-        self.round.deal()
-        self.round.simple_bet()
-        self.round.flop()
-
+        self.round.deal() 
+        # self.round.flop()
+'''
         print("Aposta de: ", self.round.bet)
         print("Valendo: ", self.round.pot)
         print("Cartas do player: ", self.player.get_hand().get_cards())
@@ -287,3 +285,4 @@ class Game:
 
         vencedor = self.round.calc_winner()
         print("O vencedor desta rodada é: ", vencedor)
+'''
