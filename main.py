@@ -1,5 +1,4 @@
-from game import *
-from app import App
+from src.app import App
 
 def main():
     app = App()
